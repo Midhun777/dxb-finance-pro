@@ -4,8 +4,13 @@
   --color-brand-primary: #0f172a;
   --color-brand-secondary: #059669;
   --color-brand-accent: #334155;
+  --color-brand-emerald: #10b981;
+  --color-brand-slate: #1e293b;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --shadow-premium: 0 20px 50px -12px rgba(0, 0, 0, 0.15);
+  --shadow-glass: 0 8px 32px 0 rgba(15, 23, 42, 0.1);
 }
 
 :root {
@@ -18,16 +23,57 @@
   body {
     @apply bg-slate-50 text-slate-900 antialiased;
     font-family: var(--font-sans);
+    background-image:
+      radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(15, 23, 42, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-primary text-white px-8 py-3 rounded-lg font-semibold transition-all hover:bg-slate-800 active:scale-95 shadow-lg;
+    @apply relative overflow-hidden bg-brand-primary text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-slate-800 active:scale-95 shadow-premium hover:-translate-y-0.5;
+  }
+
+  .btn-primary::after {
+    @apply content-[''] absolute inset-0 bg-white/10 opacity-0 transition-opacity hover:opacity-100;
   }
 
   .btn-secondary {
-    @apply bg-brand-secondary text-white px-8 py-3 rounded-lg font-semibold transition-all hover:bg-emerald-700 active:scale-95 shadow-lg;
+    @apply bg-brand-secondary text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-emerald-700 active:scale-95 shadow-premium hover:-translate-y-0.5;
+  }
+
+  .glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-dark {
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-premium);
+    color: white;
+  }
+
+  .premium-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-glass);
+    @apply rounded-3xl p-8 transition-all hover:shadow-2xl hover:-translate-y-1 duration-300;
+  }
+
+  .brand-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-brand-secondary to-slate-900;
   }
 }
 
@@ -62,4 +108,17 @@
 
 .animate-pulse-subtle {
   animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full border-4 border-slate-100 hover:bg-slate-400 transition-colors;
 }

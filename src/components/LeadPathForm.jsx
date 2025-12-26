@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wallet, Banknote, CreditCard, ArrowLeft, MessageCircle, Phone } from 'lucide-react';
+import { Wallet, Banknote, CreditCard, ArrowLeft, ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const LeadPathForm = () => {
@@ -91,158 +91,151 @@ const LeadPathForm = () => {
 
 
     return (
-        <section id="select-path" className="py-24 bg-white">
+        <section id="select-path" className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Select Your Financial Goal</h2>
-                        <p className="text-slate-600 text-lg">Pick a path to receive a custom strategy tailored to your needs.</p>
-                    </div>
-
+                <div className="max-w-5xl mx-auto">
                     <AnimatePresence mode="wait">
                         {!path ? (
                             <motion.div
                                 key="selector"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                className="grid md:grid-cols-3 gap-6"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="grid md:grid-cols-3 gap-8"
                             >
                                 {paths.map((p) => (
                                     <button
                                         key={p.id}
                                         onClick={() => setPath(p.id)}
-                                        className="group p-8 rounded-3xl border-2 border-slate-100 hover:border-brand-secondary transition-all text-left bg-white shadow-sm hover:shadow-xl hover:-translate-y-2"
+                                        className="premium-card group text-left flex flex-col justify-between min-h-[320px]"
                                     >
-                                        <div className={`w-16 h-16 ${p.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                            {p.icon}
+                                        <div>
+                                            <div className={`w-16 h-16 ${p.color} rounded-2xl flex items-center justify-center mb-8 border border-black/5 group-hover:scale-110 group-hover:bg-brand-secondary group-hover:text-white transition-all duration-500`}>
+                                                {p.icon}
+                                            </div>
+                                            <h3 className="text-2xl font-black text-slate-900 mb-3 tracking-tighter uppercase italic">{p.title}</h3>
+                                            <p className="text-slate-500 text-lg leading-relaxed font-medium">{p.tagline}</p>
                                         </div>
-                                        <h3 className="text-xl font-bold text-slate-900 mb-2">{p.title}</h3>
-                                        <p className="text-slate-500 text-sm leading-relaxed">{p.tagline}</p>
+                                        <div className="mt-8 flex items-center gap-2 text-brand-secondary font-black text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                            Select Path <ArrowRight size={16} />
+                                        </div>
                                     </button>
                                 ))}
                             </motion.div>
                         ) : (
                             <motion.div
                                 key="form"
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                className="bg-slate-50 rounded-[40px] p-8 md:p-12 border border-slate-100 shadow-2xl relative"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 30 }}
+                                className="glass rounded-[48px] p-8 md:p-16 relative overflow-hidden"
                             >
+                                {/* Decorative elements */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+
                                 <button
                                     onClick={() => setPath(null)}
-                                    className="absolute top-8 left-8 text-slate-400 hover:text-brand-primary flex items-center gap-2 text-sm font-bold transition-colors"
+                                    className="absolute top-10 left-10 text-slate-400 hover:text-brand-primary flex items-center gap-2 text-xs font-black uppercase tracking-widest transition-colors z-10"
                                 >
                                     <ArrowLeft size={16} /> Back
                                 </button>
 
-                                <div className="text-center mb-10 pt-4">
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                                <div className="text-center mb-16 relative z-10">
+                                    <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter uppercase italic">
                                         {path === 'personal' ? 'Personal Loan Application' : path === 'buyout' ? 'Loan Buyout Strategy' : 'Credit Card Matchmaker'}
                                     </h3>
-                                    <div className="flex items-center justify-center gap-2 text-brand-secondary font-bold text-sm">
-                                        <Phone size={14} /> 055 353 6448
-                                    </div>
+                                    <p className="text-brand-secondary font-black tracking-[0.2em] uppercase text-xs">Direct Support: 055 353 6448</p>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto">
+                                <form onSubmit={handleSubmit} className="space-y-10 max-w-2xl mx-auto relative z-10">
                                     {path === 'personal' && (
-                                        <>
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Monthly Salary</label>
-                                                    <select name="salaryRange" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white">
-                                                        <option value="">Select Range</option>
-                                                        <option value="<5000">Less than AED 5,000</option>
-                                                        <option value="5000-10000">AED 5,000 - 10,000</option>
-                                                        <option value="10000+">AED 10,000+</option>
-                                                    </select>
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Employer Name</label>
-                                                    <input type="text" name="employer" placeholder="Company Name" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
-                                                </div>
+                                        <div className="grid md:grid-cols-2 gap-10">
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Monthly Salary (AED)</label>
+                                                <select name="salaryRange" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold">
+                                                    <option value="">Select Range</option>
+                                                    <option value="<5000">Less than AED 5,000</option>
+                                                    <option value="5000-10000">AED 5,000 - 10,000</option>
+                                                    <option value="10000+">AED 10,000+</option>
+                                                </select>
                                             </div>
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Loan Amount (AED)</label>
-                                                    <input type="number" name="loanAmount" placeholder="e.g. 100,000" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Current Liabilities</label>
-                                                    <input type="text" name="liabilities" placeholder="e.g. None or Card EMI" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
-                                                </div>
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Employer Name</label>
+                                                <input type="text" name="employer" placeholder="Company Name" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
                                             </div>
-                                        </>
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Required Amount (AED)</label>
+                                                <input type="number" name="loanAmount" placeholder="e.g. 100,000" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
+                                            </div>
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Other Liabilities</label>
+                                                <input type="text" name="liabilities" placeholder="e.g. Card EMIs" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
+                                            </div>
+                                        </div>
                                     )}
 
                                     {path === 'buyout' && (
-                                        <>
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Total Outstanding (AED)</label>
-                                                    <input type="number" name="totalDebt" placeholder="Total Debt Amount" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Monthly EMI (AED)</label>
-                                                    <input type="number" name="currentEMI" placeholder="Your Monthly Payment" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
-                                                </div>
+                                        <div className="grid md:grid-cols-2 gap-10">
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Total Outstanding (AED)</label>
+                                                <input type="number" name="totalDebt" placeholder="Total Debt Amount" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
                                             </div>
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Current Bank</label>
-                                                    <input type="text" name="bank" placeholder="e.g. FAB, ADCB" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
-                                                </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Salary Transfer?</label>
-                                                    <select name="salaryTransfer" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white">
-                                                        <option value="">Select Option</option>
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
-                                                    </select>
-                                                </div>
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Current Monthly EMI (AED)</label>
+                                                <input type="number" name="currentEMI" placeholder="Your Monthly Payment" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
                                             </div>
-                                        </>
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Lending Bank</label>
+                                                <input type="text" name="bank" placeholder="e.g. FAB, ADCB" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
+                                            </div>
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Salary Transfer Account?</label>
+                                                <select name="salaryTransfer" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold">
+                                                    <option value="">Select Option</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     )}
 
                                     {path === 'card' && (
-                                        <>
-                                            <div className="space-y-2">
-                                                <label className="text-xs font-black uppercase tracking-widest text-slate-400">Primary Interest</label>
-                                                <select name="primaryInterest" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white">
+                                        <div className="space-y-10">
+                                            <div className="space-y-4">
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Primary Card Benefit</label>
+                                                <select name="primaryInterest" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold">
                                                     <option value="">Choose Benefit</option>
                                                     <option value="Cashback">Cashback & Savings</option>
                                                     <option value="Travel">Travel & Air Miles</option>
                                                     <option value="Lounge">Lounge Access & Luxury</option>
                                                 </select>
                                             </div>
-                                            <div className="grid md:grid-cols-2 gap-6">
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Monthly Salary (AED)</label>
-                                                    <input type="number" name="salary" placeholder="e.g. 15,000" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
+                                            <div className="grid md:grid-cols-2 gap-10">
+                                                <div className="space-y-4">
+                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Monthly Salary (AED)</label>
+                                                    <input type="number" name="salary" placeholder="e.g. 15,000" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
                                                 </div>
-                                                <div className="space-y-2">
-                                                    <label className="text-xs font-black uppercase tracking-widest text-slate-400">Avg. Monthly Spend (AED)</label>
-                                                    <input type="number" name="monthlySpend" placeholder="e.g. 5,000" required onChange={handleInputChange} className="w-full p-4 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white" />
+                                                <div className="space-y-4">
+                                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Estimated Monthly Spend</label>
+                                                    <input type="number" name="monthlySpend" placeholder="e.g. 5,000" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
                                                 </div>
                                             </div>
-                                        </>
+                                        </div>
                                     )}
 
-                                    <div className="pt-6">
+                                    <div className="pt-10">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="w-full bg-brand-primary text-white py-5 rounded-2xl font-black text-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-3 shadow-[0_20px_40px_-15px_rgba(15,23,42,0.4)] hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                                            className="btn-secondary w-full !py-6 !text-2xl shadow-[0_30px_60px_-15px_rgba(5,150,105,0.4)]"
                                         >
-                                            {isSubmitting ? 'Sending Data...' : (
-                                                <>
-                                                    Submit & Chat on WhatsApp <MessageCircle size={22} fill="white" />
-                                                </>
+                                            {isSubmitting ? 'SECURELY SENDING...' : (
+                                                <span className="flex items-center justify-center gap-4">
+                                                    SUBMIT & CONNECT <MessageCircle size={32} />
+                                                </span>
                                             )}
                                         </button>
-                                        <p className="text-center text-[10px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Secure Submission • Real-time Pre-qualification</p>
+                                        <p className="text-center text-[10px] text-slate-400 mt-8 uppercase tracking-[0.3em] font-black opacity-60 italic">End-to-End Encrypted Consultation Request</p>
                                     </div>
                                 </form>
                             </motion.div>

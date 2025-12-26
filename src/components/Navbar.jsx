@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Calculator, ShieldCheck } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = ({ scrollToSection }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -14,67 +15,71 @@ const Navbar = ({ scrollToSection }) => {
     }, []);
 
     const navLinks = [
-        { name: 'About Abin Mathew', id: 'about' },
-
-        { name: 'EMI Calculator', id: 'calculator' },
+        { name: 'About', id: 'about' },
+        { name: 'Calculator', id: 'calculator' },
         { name: 'Services', id: 'services' },
     ];
 
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] py-4' : 'bg-transparent py-6'
                 }`}
         >
             <div className="container mx-auto px-4 flex items-center justify-between">
                 {/* Logo */}
                 <div
-                    className="flex items-center gap-2 cursor-pointer"
+                    className="flex items-center gap-3 cursor-pointer group"
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
-                    <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center shadow-lg">
-                        <ShieldCheck className="text-emerald-400" size={24} />
+                    <div className="w-12 h-12 bg-slate-900 rounded-[14px] flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-300">
+                        <ShieldCheck className="text-emerald-400" size={28} />
                     </div>
                     <div>
-                        <span className="text-xl font-bold text-slate-900 block leading-tight">Abin Mathew</span>
-
-                        <span className="text-[10px] text-brand-secondary font-bold uppercase tracking-wider block leading-tight">Finance Expert</span>
+                        <span className="text-2xl font-black text-slate-900 block leading-none italic tracking-tighter">ABIN MATHEW</span>
+                        <span className="text-[9px] text-brand-secondary font-black uppercase tracking-[0.3em] block mt-1">Strategic Finance</span>
                     </div>
                 </div>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-10">
                     {navLinks.map((link) => (
                         <button
                             key={link.id}
                             onClick={() => scrollToSection(link.id)}
-                            className="text-sm font-semibold text-slate-600 hover:text-brand-primary transition-colors"
+                            className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-brand-secondary transition-colors relative group"
                         >
                             {link.name}
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full" />
                         </button>
                     ))}
                     <a
                         href="https://wa.me/971553536448"
-                        className="btn-primary flex items-center gap-2 py-2 px-6 text-sm"
+                        className="btn-primary !py-2.5 !px-6 !text-xs !rounded-full flex items-center gap-2"
                     >
-                        <Phone size={16} />
+                        <Phone size={14} />
                         Consult Now
                     </a>
                 </div>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-slate-900"
+                    className="md:hidden text-slate-900 p-2 glass rounded-xl"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
             {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 shadow-2xl animate-in slide-in-from-top-4 duration-300">
-                    <div className="p-4 flex flex-col gap-4">
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="md:hidden absolute top-full left-4 right-4 mt-4 glass rounded-3xl overflow-hidden shadow-2xl p-6 flex flex-col gap-6"
+                    >
                         {navLinks.map((link) => (
                             <button
                                 key={link.id}
@@ -82,21 +87,21 @@ const Navbar = ({ scrollToSection }) => {
                                     scrollToSection(link.id);
                                     setIsMobileMenuOpen(false);
                                 }}
-                                className="text-left py-2 font-semibold text-slate-700 hover:text-brand-secondary transition-colors"
+                                className="text-left font-black text-slate-900 text-xl tracking-tight"
                             >
                                 {link.name}
                             </button>
                         ))}
                         <a
                             href="https://wa.me/971553536448"
-                            className="btn-secondary w-full flex items-center justify-center gap-2"
+                            className="btn-secondary w-full flex items-center justify-center gap-3 py-4"
                         >
                             <Phone size={20} />
                             Free Consultation
                         </a>
-                    </div>
-                </div>
-            )}
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </nav>
     );
 };

@@ -53,7 +53,8 @@ const LeadPathForm = () => {
             });
 
             // We proceed to WhatsApp regardless of Formspree status to ensure the lead is never lost
-            const messageHeader = `Hi Abin, I just filled out the form on DXB Finance Pro.\n\n`;
+            const messageHeader = `Hi Abin Mathew, I just filled out the form on DXB Finance Pro.\n\n`;
+
             const categoryName = path === 'buyout' ? 'Loan Buyout' : path === 'personal' ? 'Personal Loan' : 'Credit Card';
             let messageBody = `*Interest:* ${categoryName}\n`;
 
@@ -81,7 +82,8 @@ const LeadPathForm = () => {
         } catch (error) {
             console.error('Submission Error:', error);
             // Fallback: If everything fails, still try to open WhatsApp with basic info
-            window.location.href = `https://wa.me/971553536448?text=${encodeURIComponent("Hi Abin, I'm interested in your services. Let's talk!")}`;
+            window.location.href = `https://wa.me/971553536448?text=${encodeURIComponent("Hi Abin Mathew, I'm interested in your services. Let's talk!")}`;
+
         } finally {
             setIsSubmitting(false);
         }

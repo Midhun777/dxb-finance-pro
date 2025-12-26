@@ -14,7 +14,8 @@ const Navbar = ({ scrollToSection }) => {
     }, []);
 
     const navLinks = [
-        { name: 'About Abin', id: 'about' },
+        { name: 'About Abin Mathew', id: 'about' },
+
         { name: 'EMI Calculator', id: 'calculator' },
         { name: 'Services', id: 'services' },
     ];
@@ -35,7 +36,8 @@ const Navbar = ({ scrollToSection }) => {
                         <ShieldCheck className="text-emerald-400" size={24} />
                     </div>
                     <div>
-                        <span className="text-xl font-bold text-slate-900 block leading-tight">Abin</span>
+                        <span className="text-xl font-bold text-slate-900 block leading-tight">Abin Mathew</span>
+
                         <span className="text-[10px] text-brand-secondary font-bold uppercase tracking-wider block leading-tight">Finance Expert</span>
                     </div>
                 </div>

@@ -76,7 +76,8 @@ const App = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 space-y-6 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Meet Abin: Your Strategic Financial Partner</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Meet Abin Mathew: Your Strategic Financial Partner</h2>
+
               <p className="text-lg text-slate-600 leading-relaxed italic">
                 "In the fast-paced financial landscape of the UAE, you need more than just a loan—you need a strategy."
               </p>
@@ -92,14 +93,16 @@ const App = () => {
                   href="https://wa.me/971553536448"
                   className="inline-flex items-center gap-2 text-brand-secondary font-bold hover:gap-3 transition-all"
                 >
-                  Work with Abin <ArrowRight size={20} />
+                  Work with Abin Mathew <ArrowRight size={20} />
+
                 </a>
               </div>
             </div>
             <div className="w-full md:w-1/3">
               <div className="aspect-square bg-white rounded-3xl shadow-xl p-4 border border-slate-100 relative">
                 <div className="absolute inset-4 overflow-hidden rounded-2xl">
-                  <img src="/og-image.png" alt="Abin" className="w-full h-full object-cover" />
+                  <img src="/og-image.png" alt="Abin Mathew" className="w-full h-full object-cover" />
+
                 </div>
               </div>
             </div>
@@ -210,7 +213,8 @@ const App = () => {
       {/* Footer */}
       <footer className="bg-white py-12 border-t border-slate-100">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-slate-800 font-bold text-xl mb-2">Abin</p>
+          <p className="text-slate-800 font-bold text-xl mb-2">Abin Mathew</p>
+
           <p className="text-brand-secondary font-medium mb-4">055 353 6448</p>
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} UAE Personal Finance Expert. All rights reserved.

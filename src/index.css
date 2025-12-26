@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #0f172a;
+  --color-brand-secondary: #059669;
+  --color-brand-accent: #334155;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --brand-primary: #0f172a;
+  --brand-secondary: #059669;
+  --brand-accent: #334155;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-primary text-white px-8 py-3 rounded-lg font-semibold transition-all hover:bg-slate-800 active:scale-95 shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-brand-secondary text-white px-8 py-3 rounded-lg font-semibold transition-all hover:bg-emerald-700 active:scale-95 shadow-lg;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes pulse-subtle {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.3);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}

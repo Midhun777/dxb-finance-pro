@@ -3,6 +3,8 @@ import { MessageCircle, Calculator, TrendingUp, ShieldCheck, ArrowRight, Externa
 import { motion, AnimatePresence } from 'framer-motion';
 import CalculatorComponent from './components/Calculator';
 import Navbar from './components/Navbar';
+import LeadPathForm from './components/LeadPathForm';
+
 
 
 
@@ -42,7 +44,7 @@ const App = () => {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button
-                  onClick={() => scrollToSection('calculator')}
+                  onClick={() => scrollToSection('select-path')}
                   className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2"
                 >
                   <Calculator size={20} />
@@ -104,6 +106,10 @@ const App = () => {
           </div>
         </div>
       </section>
+
+      {/* Select Your Path Section */}
+      <LeadPathForm />
+
 
       {/* Loan Buyout Calculator */}
       <section id="calculator" className="py-20 bg-white">

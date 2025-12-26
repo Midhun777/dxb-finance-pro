@@ -14,7 +14,7 @@ const CalculatorComponent = () => {
 
     // Calculation logic
     const tenor = 48;
-    const annualRate = 6.99;
+    const annualRate = 5.5;
     const monthlyRate = annualRate / 12 / 100;
 
     const calculatedEMI = Math.round(
@@ -24,19 +24,43 @@ const CalculatorComponent = () => {
 
     const estimatedSavings = currentEMI - calculatedEMI;
 
-    const handleUnlock = (e) => {
+    const handleUnlock = async (e) => {
         e.preventDefault();
         if (!name || !phone) return alert('Please enter your name and phone number');
 
         setIsSubmitting(true);
 
-        // Simulating form submission (replace with Formspree/Resend link)
-        setTimeout(() => {
+        try {
+            // Updated to use a real Formspree endpoint (User should replace with their own ID)
+            const response = await fetch('https://formspree.io/f/mnnqqlbv', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name,
+                    phone,
+                    debt,
+                    currentEMI,
+                    salary,
+                    calculatedEMI,
+                    estimatedSavings,
+                    _subject: `New Lead from ${name} - Loan Assist`
+                }),
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+                setIsLocked(false);
+            } else {
+                alert('Submission failed. Please try again or contact Abin directly.');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert('Something went wrong. Please check your connection.');
+        } finally {
             setIsSubmitting(false);
-            setIsSubmitted(true);
-            setIsLocked(false);
-        }, 1000);
+        }
     };
+
 
     return (
         <div className="space-y-8">
@@ -79,46 +103,50 @@ const CalculatorComponent = () => {
 
             {isLocked && !isSubmitted ? (
                 <div className="relative">
-                    <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-white/60 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center">
-                            <h4 className="text-xl font-bold mb-4">Unlock Full Savings Breakdown</h4>
-                            <p className="text-slate-600 mb-6 text-sm">Join 500+ UAE residents who optimized their debt this month.</p>
+                    <div className="bg-slate-50 rounded-3xl p-6 md:p-10 border border-slate-100 relative overflow-hidden shadow-sm">
+                        <div className="absolute inset-0 bg-white/70 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center">
+                            <h4 className="text-xl md:text-2xl font-bold mb-3">Unlock Full Plan</h4>
+                            <p className="text-slate-600 mb-6 text-sm md:text-base max-w-[280px] md:max-w-md">Join 500+ UAE residents who optimized their debt this month.</p>
 
                             <form onSubmit={handleUnlock} className="w-full max-w-sm space-y-4">
                                 <input
                                     type="text"
+                                    name="name"
                                     placeholder="Full Name"
                                     required
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    className="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white"
+                                    className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white shadow-sm"
                                 />
                                 <input
                                     type="tel"
+                                    name="phone"
                                     placeholder="UAE Phone (05x xxxxxxx)"
                                     required
                                     value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
-                                    className="w-full p-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white"
+                                    onInput={(e) => setPhone(e.target.value)}
+                                    className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-secondary outline-none bg-white shadow-sm"
                                 />
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-brand-primary text-white py-4 rounded-xl font-bold hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
+                                    className="w-full bg-brand-primary text-white py-4 rounded-xl font-bold hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-lg hover:-translate-y-1 active:scale-95"
                                 >
-                                    {isSubmitting ? 'Loading...' : 'See My Full Plan'}
+                                    {isSubmitting ? 'Processing...' : 'See My Full Savings'}
                                 </button>
                             </form>
                         </div>
 
-                        {/* Blurry content behind */}
-                        <div className="opacity-20 pointer-events-none space-y-4">
-                            <div className="h-4 bg-slate-200 rounded w-3/4"></div>
-                            <div className="h-4 bg-slate-200 rounded w-1/2"></div>
-                            <div className="h-12 bg-slate-200 rounded w-full"></div>
+                        {/* Blurry mock content */}
+                        <div className="blur-sm opacity-20 pointer-events-none space-y-4 py-4">
+                            <div className="h-6 bg-slate-200 rounded w-3/4"></div>
+                            <div className="h-6 bg-slate-200 rounded w-1/2"></div>
+                            <div className="h-24 bg-slate-200 rounded w-full"></div>
+                            <div className="h-6 bg-slate-200 rounded w-2/3"></div>
                         </div>
                     </div>
                 </div>
+
             ) : (
                 <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 animate-in fade-in slide-in-from-bottom-4 duration-700">
                     <h4 className="text-xl font-bold text-emerald-900 mb-4">Your Consolidation Strategy</h4>
@@ -133,7 +161,7 @@ const CalculatorComponent = () => {
                         </div>
                     </div>
                     <p className="text-center text-xs text-emerald-700 mt-6">
-                        *Calculated at 6.99% reducing rate over 48 months. Our advisor will call you shortly.
+                        *Calculated at 5.5% reducing rate over 48 months. Our advisor will call you shortly.
                     </p>
                 </div>
             )}

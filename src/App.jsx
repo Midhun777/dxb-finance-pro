@@ -2,50 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { MessageCircle, Calculator, TrendingUp, ShieldCheck, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CalculatorComponent from './components/Calculator';
+import Navbar from './components/Navbar';
+
 
 
 const App = () => {
-  const [tickerData, setTickerData] = useState([
-    { symbol: 'BTC', price: '...', color: 'text-orange-500' },
-    { symbol: 'ETH', price: '...', color: 'text-blue-500' },
-    { symbol: 'SOL', price: '...', color: 'text-purple-500' }
-  ]);
-
-  // Fetch live ticker data from Binance API
-  useEffect(() => {
-    const fetchPrices = async () => {
-      try {
-        const response = await fetch('https://api.binance.com/api/v3/ticker/price');
-        const data = await response.json();
-
-        const symbolsMap = {
-          BTCUSDT: 'BTC',
-          ETHUSDT: 'ETH',
-          SOLUSDT: 'SOL'
-        };
-
-        const livePrices = data.reduce((acc, curr) => {
-          if (symbolsMap[curr.symbol]) {
-            acc[symbolsMap[curr.symbol]] = `$${parseFloat(curr.price).toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
-          }
-          return acc;
-        }, {});
-
-        setTickerData(prev => prev.map(item => ({
-          ...item,
-          price: livePrices[item.symbol] || item.price
-        })));
-      } catch (error) {
-        console.error('Error fetching crypto prices:', error);
-      }
-    };
-
-    fetchPrices();
-    const interval = setInterval(fetchPrices, 30000); // Update every 30 seconds
-    return () => clearInterval(interval);
-  }, []);
-
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -55,25 +16,6 @@ const App = () => {
 
   return (
     <div className="min-h-screen font-sans selection:bg-brand-secondary selection:text-white">
-      {/* Navigation Ticker */}
-      <div className="bg-brand-primary text-white py-2 overflow-hidden whitespace-nowrap border-b border-slate-700">
-        <div className="inline-block animate-marquee px-4">
-          {tickerData.map((coin, i) => (
-            <span key={i} className="mx-8 font-mono">
-              <span className={coin.color}>{coin.symbol}</span>: {coin.price}
-              <span className="text-emerald-400 ml-1">↑</span>
-            </span>
-          ))}
-          {/* Duplicate for seamless marquee */}
-          {tickerData.map((coin, i) => (
-            <span key={`dup-${i}`} className="mx-8 font-mono">
-              <span className={coin.color}>{coin.symbol}</span>: {coin.price}
-              <span className="text-emerald-400 ml-1">↑</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
@@ -88,13 +30,13 @@ const App = () => {
               </span>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6">
                 Lower Your EMI. <br />
-                <span className="text-brand-secondary">Grow Your Wealth.</span> <br />
+                <span className="text-brand-secondary">Reduce Your Debt.</span> <br />
                 Rule Your Future.
               </h1>
               <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-                UAE’s Personal Finance Expert specializing in <span className="text-slate-900 font-semibold">Loan Buyouts</span>,
-                <span className="text-slate-900 font-semibold"> Instant Credit Cards</span>, and
-                <span className="text-slate-900 font-semibold"> Crypto Options Strategy</span>.
+                UAE’s leading Personal Finance Expert specializing in <span className="text-slate-900 font-semibold">Loan Buyouts</span>,
+                <span className="text-slate-900 font-semibold"> Debt Consolidation</span>, and
+                <span className="text-slate-900 font-semibold"> Interest Rate Optimization</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -110,7 +52,7 @@ const App = () => {
                   className="btn-secondary w-full sm:w-auto border border-emerald-600 flex items-center justify-center gap-2"
                 >
                   <MessageCircle size={20} />
-                  Get Crypto Insights
+                  Free WhatsApp Consultation
                 </a>
               </div>
             </motion.div>
@@ -124,7 +66,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Loan Buyout Calculator placeholder */}
+      {/* Loan Buyout Calculator */}
       <section id="calculator" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto bg-slate-50 rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100">
@@ -132,35 +74,32 @@ const App = () => {
               <h2 className="text-3xl font-bold mb-4">Debt Consolidation Loan UAE</h2>
               <p className="text-slate-600">Calculate your potential savings in seconds.</p>
             </div>
-            {/* Calculator logic */}
             <CalculatorComponent />
-
           </div>
         </div>
       </section>
 
-      {/* Crypto & Options Section placeholder */}
+      {/* Authority Section */}
       <section className="py-20 bg-brand-primary text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Crypto Options Trading UAE</h2>
-            <p className="text-slate-300 text-lg mb-8">
-              Specializing in <span className="text-emerald-400 font-semibold">Delta-Neutral Options Strategies</span> and
-              <span className="text-emerald-400 font-semibold"> Futures Hedging</span>.
-            </p>
-            <p className="text-slate-400 mb-10 max-w-xl mx-auto italic">
-              "Master the Bitcoin futures strategy Dubai investors trust for consistent results."
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Expert Debt Relief Strategies</h2>
+            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
+              Why pay more on your loans? Our UAE banking specialists help you secure the
+              <span className="text-emerald-400 font-semibold"> Lowest Interest Rates</span> and
+              <span className="text-emerald-400 font-semibold"> Best Payment Terms</span> through strategic bank buyouts.
             </p>
             <a
               href="https://wa.me/971553536448"
               className="inline-flex items-center gap-2 bg-brand-secondary hover:bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg"
             >
-              <ExternalLink size={20} />
-              Start Zero-Tax Crypto Trading
+              <MessageCircle size={20} />
+              Talk to a Specialist Now
             </a>
           </div>
         </div>
       </section>
+
 
       {/* Trust & SEO Content placeholder */}
       <section className="py-20 bg-slate-50">

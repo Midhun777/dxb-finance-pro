@@ -19,7 +19,6 @@ const App = () => {
       <Navbar scrollToSection={scrollToSection} />
 
       {/* Hero Section */}
-
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -32,14 +31,13 @@ const App = () => {
                 Personal Finance Expert UAE
               </span>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6">
-                Lower Your EMI. <br />
-                <span className="text-brand-secondary">Reduce Your Debt.</span> <br />
-                Rule Your Future.
+                Master Your Finances. <br />
+                <span className="text-brand-secondary">Secure Your Future in the UAE.</span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-                UAE’s leading Personal Finance Expert specializing in <span className="text-slate-900 font-semibold">Loan Buyouts</span>,
-                <span className="text-slate-900 font-semibold"> Debt Consolidation</span>, and
-                <span className="text-slate-900 font-semibold"> Interest Rate Optimization</span>.
+              <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+                Expert guidance on <span className="text-slate-900 font-semibold">Personal Loans</span>,
+                <span className="text-slate-900 font-semibold"> Credit Cards</span>, and
+                <span className="text-slate-900 font-semibold"> Loan Buyouts</span>. Whether you’re looking to consolidate debt or maximize your liquidity, we provide the strategy you need to thrive in the UAE market.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -48,19 +46,20 @@ const App = () => {
                   className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2"
                 >
                   <Calculator size={20} />
-                  Consolidate My Debt Now
+                  Check My Loan Eligibility
                 </button>
                 <a
                   href="https://wa.me/971553536448"
                   className="btn-secondary w-full sm:w-auto border border-emerald-600 flex items-center justify-center gap-2"
                 >
                   <MessageCircle size={20} />
-                  Free WhatsApp Consultation
+                  Chat with an Expert on WhatsApp
                 </a>
               </div>
             </motion.div>
           </div>
         </div>
+
 
         {/* Background Decorations */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10 pointer-events-none">
@@ -69,40 +68,101 @@ const App = () => {
         </div>
       </section>
 
+      {/* About Me Section */}
+      <section id="about" className="py-20 bg-slate-50 border-y border-slate-100">
+
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 space-y-6 text-center md:text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Meet Abin: Your Strategic Financial Partner</h2>
+              <p className="text-lg text-slate-600 leading-relaxed italic">
+                "In the fast-paced financial landscape of the UAE, you need more than just a loan—you need a strategy."
+              </p>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                As an entrepreneur and active investor in the <span className="text-slate-900 font-semibold">Global Stock Markets and Cryptocurrency</span>, I understand how money moves.
+                I don't just process applications; I analyze your financial health.
+              </p>
+              <p className="text-slate-600 leading-relaxed text-lg">
+                My goal is to help you navigate <span className="text-slate-900 font-semibold">Personal Loans and Credit Cards</span> with the same precision I use in <span className="text-slate-900 font-semibold">Options and Futures</span> trading. Whether it’s a strategic Loan Buyout to reduce your interest or securing the right credit facility to grow your wealth, I am here to ensure you rule your personal finances.
+              </p>
+              <div className="pt-4">
+                <a
+                  href="https://wa.me/971553536448"
+                  className="inline-flex items-center gap-2 text-brand-secondary font-bold hover:gap-3 transition-all"
+                >
+                  Work with Abin <ArrowRight size={20} />
+                </a>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3">
+              <div className="aspect-square bg-white rounded-3xl shadow-xl p-4 border border-slate-100 relative">
+                <div className="absolute inset-4 overflow-hidden rounded-2xl">
+                  <img src="/og-image.png" alt="Abin" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Loan Buyout Calculator */}
       <section id="calculator" className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-slate-50 rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Debt Consolidation Loan UAE</h2>
-              <p className="text-slate-600">Calculate your potential savings in seconds.</p>
+          <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100 ring-1 ring-slate-100">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold mb-4">Check Your Savings Potential</h2>
+              <p className="text-slate-600">Enter your details for an instant debt optimization strategy.</p>
             </div>
             <CalculatorComponent />
           </div>
         </div>
       </section>
 
-      {/* Authority Section / Services */}
-      <section id="services" className="py-20 bg-brand-primary text-white">
 
+      {/* Services Section */}
+      <section id="services" className="py-24 bg-brand-primary text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Expert Debt Relief Strategies</h2>
-            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-              Why pay more on your loans? Our UAE banking specialists help you secure the
-              <span className="text-emerald-400 font-semibold"> Lowest Interest Rates</span> and
-              <span className="text-emerald-400 font-semibold"> Best Payment Terms</span> through strategic bank buyouts.
-            </p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">Strategic Debt Solutions</h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 space-y-4">
+              <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-xl">01</div>
+              <h3 className="text-xl font-bold uppercase tracking-wide">Personal Loans</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Tailored financing solutions with the most competitive rates in the UAE. Fast approvals to meet your immediate needs.
+              </p>
+            </div>
+
+            <div className="bg-slate-800/50 p-8 rounded-2xl border border-emerald-500/30 scale-105 shadow-2xl space-y-4 relative z-10">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-brand-primary px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Recommended</div>
+              <div className="w-12 h-12 bg-emerald-500 text-brand-primary rounded-xl flex items-center justify-center font-bold text-xl">02</div>
+              <h3 className="text-xl font-bold uppercase tracking-wide">Loan Buyouts</h3>
+              <p className="text-slate-200 leading-relaxed">
+                Stop overpaying on interest. We specialize in consolidating your existing debt into a single, manageable, lower-cost monthly payment.
+              </p>
+            </div>
+
+            <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 space-y-4">
+              <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-xl">03</div>
+              <h3 className="text-xl font-bold uppercase tracking-wide">Credit Card Optimization</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Don’t just spend—earn. We help you select and manage credit cards that offer the best cashback, miles, and rewards for your lifestyle.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 text-center">
             <a
               href="https://wa.me/971553536448"
-              className="inline-flex items-center gap-2 bg-brand-secondary hover:bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg"
+              className="inline-flex items-center gap-3 bg-white text-brand-primary hover:bg-emerald-50 px-10 py-5 rounded-2xl font-black transition-all shadow-xl hover:-translate-y-1"
             >
-              <MessageCircle size={20} />
+              <MessageCircle size={24} />
               Talk to a Specialist Now
             </a>
           </div>
         </div>
       </section>
+
 
 
       {/* Trust & SEO Content / How it works */}

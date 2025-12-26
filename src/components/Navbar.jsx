@@ -14,10 +14,11 @@ const Navbar = ({ scrollToSection }) => {
     }, []);
 
     const navLinks = [
+        { name: 'About Abin', id: 'about' },
         { name: 'EMI Calculator', id: 'calculator' },
-        { name: 'Loan Buyouts', id: 'services' },
-        { name: 'How it Works', id: 'how-it-works' },
+        { name: 'Services', id: 'services' },
     ];
+
 
     return (
         <nav

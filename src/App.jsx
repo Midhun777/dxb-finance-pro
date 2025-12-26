@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Calculator, TrendingUp, ShieldCheck, ArrowRight, ExternalLink } from 'lucide-react';
+import { MessageCircle, Calculator, TrendingUp, ShieldCheck, ArrowRight, ExternalLink, Linkedin } from 'lucide-react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import CalculatorComponent from './components/Calculator';
 import Navbar from './components/Navbar';
@@ -88,15 +89,23 @@ const App = () => {
               <p className="text-slate-600 leading-relaxed text-lg">
                 My goal is to help you navigate <span className="text-slate-900 font-semibold">Personal Loans and Credit Cards</span> with the same precision I use in <span className="text-slate-900 font-semibold">Options and Futures</span> trading. Whether it’s a strategic Loan Buyout to reduce your interest or securing the right credit facility to grow your wealth, I am here to ensure you rule your personal finances.
               </p>
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
                 <a
                   href="https://wa.me/971553536448"
                   className="inline-flex items-center gap-2 text-brand-secondary font-bold hover:gap-3 transition-all"
                 >
                   Work with Abin Mathew <ArrowRight size={20} />
-
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/abin-mathew-928451392"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all"
+                >
+                  Daily Finance Tips on LinkedIn <Linkedin size={20} />
                 </a>
               </div>
+
             </div>
             <div className="w-full md:w-1/3">
               <div className="aspect-square bg-white rounded-3xl shadow-xl p-4 border border-slate-100 relative">
@@ -216,9 +225,28 @@ const App = () => {
           <p className="text-slate-800 font-bold text-xl mb-2">Abin Mathew</p>
 
           <p className="text-brand-secondary font-medium mb-4">055 353 6448</p>
+          <div className="flex justify-center gap-4 mb-6">
+            <a
+              href="https://wa.me/971553536448"
+              className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all shadow-sm"
+              aria-label="WhatsApp"
+            >
+              <MessageCircle size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/abin-mathew-928451392"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
+          </div>
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} UAE Personal Finance Expert. All rights reserved.
           </p>
+
           <p className="text-slate-400 text-[10px] mt-4 max-w-xs mx-auto">
             Results are estimates. Final loan terms depend on bank approval.
           </p>

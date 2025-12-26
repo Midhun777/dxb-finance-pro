@@ -40,7 +40,8 @@ const LeadPathForm = () => {
         setIsSubmitting(true);
 
         try {
-            // Send to Formspree
+            // Attempt to send to Formspree (Primary email backup)
+            // Note: If you have a valid Formspree ID, replace 'mnnqqlbv' below.
             const response = await fetch('https://formspree.io/f/mnnqqlbv', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -51,31 +52,41 @@ const LeadPathForm = () => {
                 }),
             });
 
-            if (response.ok) {
-                // Construct WhatsApp Message
-                let waMessage = `Hi Abin, I just filled out the form on DXB Finance Pro. I'm interested in a ${path === 'buyout' ? 'Loan Buyout' : path === 'personal' ? 'Personal Loan' : 'Credit Card'}. `;
+            // We proceed to WhatsApp regardless of Formspree status to ensure the lead is never lost
+            const messageHeader = `Hi Abin, I just filled out the form on DXB Finance Pro.\n\n`;
+            const categoryName = path === 'buyout' ? 'Loan Buyout' : path === 'personal' ? 'Personal Loan' : 'Credit Card';
+            let messageBody = `*Interest:* ${categoryName}\n`;
 
-                if (path === 'buyout') {
-                    waMessage += `My current EMI is AED ${formData.currentEMI || '---'}. Let's discuss!`;
-                } else if (path === 'personal') {
-                    waMessage += `I'm looking for a loan of AED ${formData.loanAmount || '---'}. Let's discuss!`;
-                } else {
-                    waMessage += `I'm interested in ${formData.primaryInterest || 'cashback and rewards'}. Let's discuss!`;
-                }
-
-                const waUrl = `https://wa.me/971553536448?text=${encodeURIComponent(waMessage)}`;
-                window.location.href = waUrl;
-            } else {
-                alert('Submission failed. Please try again.');
+            if (path === 'personal') {
+                messageBody += `*Salary Range:* ${formData.salaryRange || '---'}\n`;
+                messageBody += `*Employer:* ${formData.employer || '---'}\n`;
+                messageBody += `*Loan Amount:* AED ${formData.loanAmount || '---'}\n`;
+                messageBody += `*Liabilities:* ${formData.liabilities || '---'}\n`;
+            } else if (path === 'buyout') {
+                messageBody += `*Total Outstanding:* AED ${formData.totalDebt || '---'}\n`;
+                messageBody += `*Monthly EMI:* AED ${formData.currentEMI || '---'}\n`;
+                messageBody += `*Current Bank:* ${formData.bank || '---'}\n`;
+                messageBody += `*Salary Transfer:* ${formData.salaryTransfer || '---'}\n`;
+            } else if (path === 'card') {
+                messageBody += `*Primary Interest:* ${formData.primaryInterest || '---'}\n`;
+                messageBody += `*Monthly Salary:* AED ${formData.salary || '---'}\n`;
+                messageBody += `*Monthly Spend:* AED ${formData.monthlySpend || '---'}\n`;
             }
+
+            messageBody += `\nLet's discuss this!`;
+
+            const waUrl = `https://wa.me/971553536448?text=${encodeURIComponent(messageHeader + messageBody)}`;
+            window.location.href = waUrl;
+
         } catch (error) {
-            console.error('Error:', error);
-            alert('Something went wrong. Redirecting you to WhatsApp directly.');
-            window.location.href = 'https://wa.me/971553536448';
+            console.error('Submission Error:', error);
+            // Fallback: If everything fails, still try to open WhatsApp with basic info
+            window.location.href = `https://wa.me/971553536448?text=${encodeURIComponent("Hi Abin, I'm interested in your services. Let's talk!")}`;
         } finally {
             setIsSubmitting(false);
         }
     };
+
 
     return (
         <section id="select-path" className="py-24 bg-white">

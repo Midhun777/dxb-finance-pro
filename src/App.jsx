@@ -16,7 +16,10 @@ const App = () => {
 
   return (
     <div className="min-h-screen font-sans selection:bg-brand-secondary selection:text-white">
+      <Navbar scrollToSection={scrollToSection} />
+
       {/* Hero Section */}
+
       <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -79,8 +82,9 @@ const App = () => {
         </div>
       </section>
 
-      {/* Authority Section */}
-      <section className="py-20 bg-brand-primary text-white">
+      {/* Authority Section / Services */}
+      <section id="services" className="py-20 bg-brand-primary text-white">
+
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Expert Debt Relief Strategies</h2>
@@ -101,8 +105,9 @@ const App = () => {
       </section>
 
 
-      {/* Trust & SEO Content placeholder */}
-      <section className="py-20 bg-slate-50">
+      {/* Trust & SEO Content / How it works */}
+      <section id="how-it-works" className="py-20 bg-slate-50">
+
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div className="space-y-6">

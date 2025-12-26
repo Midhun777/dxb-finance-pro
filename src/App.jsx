@@ -38,7 +38,7 @@ const App = () => {
               >
                 Personal Finance Expert UAE
               </motion.span>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[0.9]">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[0.9]">
                 Master Your Finances. <br />
                 <span className="brand-gradient-text">Secure Your Future.</span>
               </h1>
@@ -165,22 +165,22 @@ const App = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-24">
-            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-none">Strategic Debt Solutions</h2>
-            <div className="w-24 h-2 bg-emerald-500 mx-auto rounded-full" />
+          <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
+            <h2 className="text-4xl md:text-7xl font-black mb-8 leading-none">Strategic Debt Solutions</h2>
+            <div className="w-20 md:w-24 h-2 bg-emerald-500 mx-auto rounded-full" />
           </div>
 
           <div className="grid md:grid-cols-12 gap-6 auto-rows-[250px] md:auto-rows-[300px]">
             {/* Personal Loans */}
             <motion.div
               whileHover={{ y: -10 }}
-              className="md:col-span-4 glass-dark p-10 flex flex-col justify-between group"
+              className="md:col-span-4 glass-dark p-6 md:p-10 flex flex-col justify-between group"
             >
               <div className="space-y-4">
-                <div className="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-2xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">01</div>
-                <h3 className="text-2xl font-black uppercase tracking-tighter">Personal Loans</h3>
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl md:text-2xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">01</div>
+                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter">Personal Loans</h3>
               </div>
-              <p className="text-slate-400 text-lg leading-relaxed group-hover:text-slate-200 transition-colors">
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed group-hover:text-slate-200 transition-colors">
                 Tailored financing with UAE's most competitive rates. Immediate approvals for your goals.
               </p>
             </motion.div>
@@ -188,13 +188,13 @@ const App = () => {
             {/* Loan Buyouts - Principal Item */}
             <motion.div
               whileHover={{ y: -10 }}
-              className="md:col-span-8 glass-dark p-10 flex flex-col justify-between border-emerald-500/40 relative overflow-hidden group"
+              className="md:col-span-8 glass-dark p-6 md:p-10 flex flex-col justify-between border-emerald-500/40 relative overflow-hidden group"
             >
-              <div className="absolute -top-4 right-10 bg-emerald-500 text-brand-primary px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest z-20 shadow-xl">Recommended</div>
-              <div className="space-y-6 relative z-10">
-                <div className="w-14 h-14 bg-emerald-500 text-brand-primary rounded-2xl flex items-center justify-center font-black text-2xl">02</div>
-                <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter">Loan Buyouts</h3>
-                <p className="text-slate-300 text-xl leading-relaxed max-w-xl group-hover:text-white transition-colors">
+              <div className="absolute -top-4 right-10 bg-emerald-500 text-brand-primary px-6 py-2 rounded-full text-xs md:text-sm font-black uppercase tracking-widest z-20 shadow-xl">Recommended</div>
+              <div className="space-y-4 md:space-y-6 relative z-10">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500 text-brand-primary rounded-2xl flex items-center justify-center font-black text-xl md:text-2xl">02</div>
+                <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter">Loan Buyouts</h3>
+                <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-xl group-hover:text-white transition-colors">
                   Stop overpaying on interest. Consolidate your existing debt into a single, lower-cost monthly payment and regain control of your cash flow.
                 </p>
               </div>
@@ -204,13 +204,13 @@ const App = () => {
             {/* Credit Card Optimization */}
             <motion.div
               whileHover={{ y: -10 }}
-              className="md:col-span-7 glass-dark p-10 flex flex-col justify-between group"
+              className="md:col-span-7 glass-dark p-6 md:p-10 flex flex-col justify-between group"
             >
               <div className="space-y-4">
-                <div className="w-14 h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-2xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">03</div>
-                <h3 className="text-2xl font-black uppercase tracking-tighter">Credit Optimization</h3>
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl md:text-2xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">03</div>
+                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter">Credit Optimization</h3>
               </div>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md group-hover:text-slate-200 transition-colors">
+              <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-md group-hover:text-slate-200 transition-colors">
                 Don’t just spend—earn. Select and manage cards with top-tier cashback, miles, and rewards tailored to your lifestyle.
               </p>
             </motion.div>
@@ -256,18 +256,18 @@ const App = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         href="https://wa.me/971553536448"
-        className="fixed bottom-10 right-10 z-50 bg-[#25D366] text-white p-6 rounded-full shadow-[0_20px_50px_rgba(37,211,102,0.4)] animate-pulse-subtle"
+        className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[100] bg-[#25D366] text-white p-4 md:p-6 rounded-full shadow-[0_20px_50px_rgba(37,211,102,0.4)] animate-pulse-subtle"
         aria-label="Contact on WhatsApp"
       >
-        <MessageCircle size={40} fill="white" />
+        <MessageCircle className="w-8 h-8 md:w-10 md:h-10" fill="white" />
       </motion.a>
 
       {/* Footer - Premium Dark Refinement */}
       <footer className="bg-slate-900 border-t border-white/5 py-24 text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="mb-12">
-            <h2 className="text-5xl font-black tracking-tighter brand-gradient-text !from-emerald-400 !to-white mb-4 italic">ABIN MATHEW</h2>
-            <p className="text-emerald-500 font-bold tracking-[0.3em] uppercase text-sm">UAE Personal Finance Expert</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter brand-gradient-text !from-emerald-400 !to-white mb-4 italic">ABIN MATHEW</h2>
+            <p className="text-emerald-500 font-bold tracking-[0.3em] uppercase text-xs md:text-sm">UAE Personal Finance Expert</p>
           </div>
 
           <div className="flex justify-center gap-8 mb-12">

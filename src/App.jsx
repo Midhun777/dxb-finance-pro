@@ -11,15 +11,40 @@ const App = () => {
     { symbol: 'SOL', price: '...', color: 'text-purple-500' }
   ]);
 
-  // Mock ticker data (replace with real API later if needed)
+  // Fetch live ticker data from Binance API
   useEffect(() => {
-    const prices = {
-      BTC: '$94,234',
-      ETH: '$2,456',
-      SOL: '$189'
+    const fetchPrices = async () => {
+      try {
+        const response = await fetch('https://api.binance.com/api/v3/ticker/price');
+        const data = await response.json();
+
+        const symbolsMap = {
+          BTCUSDT: 'BTC',
+          ETHUSDT: 'ETH',
+          SOLUSDT: 'SOL'
+        };
+
+        const livePrices = data.reduce((acc, curr) => {
+          if (symbolsMap[curr.symbol]) {
+            acc[symbolsMap[curr.symbol]] = `$${parseFloat(curr.price).toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+          }
+          return acc;
+        }, {});
+
+        setTickerData(prev => prev.map(item => ({
+          ...item,
+          price: livePrices[item.symbol] || item.price
+        })));
+      } catch (error) {
+        console.error('Error fetching crypto prices:', error);
+      }
     };
-    setTickerData(prev => prev.map(item => ({ ...item, price: prices[item.symbol] })));
+
+    fetchPrices();
+    const interval = setInterval(fetchPrices, 30000); // Update every 30 seconds
+    return () => clearInterval(interval);
   }, []);
+
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);

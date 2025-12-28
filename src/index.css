@@ -38,7 +38,7 @@
 
 @layer components {
   .btn-primary {
-    @apply relative overflow-hidden bg-brand-primary text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-slate-800 active:scale-95 shadow-premium hover:-translate-y-0.5;
+    @apply relative overflow-hidden bg-brand-primary text-white px-6 py-3 rounded-xl font-bold transition-all hover:bg-slate-800 active:scale-95 shadow-lg hover:-translate-y-0.5;
   }
 
   .btn-primary::after {
@@ -46,7 +46,7 @@
   }
 
   .btn-secondary {
-    @apply bg-brand-secondary text-white px-8 py-4 rounded-xl font-bold transition-all hover:bg-emerald-700 active:scale-95 shadow-premium hover:-translate-y-0.5;
+    @apply bg-brand-secondary text-white px-6 py-3 rounded-xl font-bold transition-all hover:bg-emerald-700 active:scale-95 shadow-lg hover:-translate-y-0.5;
   }
 
   .glass {
@@ -69,7 +69,7 @@
     backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-glass);
-    @apply rounded-3xl p-8 transition-all hover:shadow-2xl hover:-translate-y-1 duration-300;
+    @apply rounded-[2rem] p-6 md:p-10 transition-all hover:shadow-xl hover:-translate-y-1 duration-300;
   }
 
   .brand-gradient-text {

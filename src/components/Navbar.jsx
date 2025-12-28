@@ -29,25 +29,25 @@ const Navbar = ({ scrollToSection }) => {
             <div className="container mx-auto px-4 flex items-center justify-between">
                 {/* Logo */}
                 <div
-                    className="flex items-center gap-3 cursor-pointer group"
+                    className="flex items-center gap-2 cursor-pointer group"
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
-                    <div className="w-12 h-12 bg-slate-900 rounded-[14px] flex items-center justify-center shadow-xl group-hover:scale-105 transition-transform duration-300">
-                        <ShieldCheck className="text-emerald-400" size={28} />
+                    <div className="w-8 h-8 bg-slate-900 rounded-[10px] flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                        <ShieldCheck className="text-emerald-400" size={20} />
                     </div>
                     <div>
-                        <span className="text-2xl font-black text-slate-900 block leading-none italic tracking-tighter">ABIN MATHEW</span>
-                        <span className="text-[9px] text-brand-secondary font-black uppercase tracking-[0.3em] block mt-1">Strategic Finance</span>
+                        <span className="text-lg font-black text-slate-900 block leading-none italic tracking-tighter">ABIN MATHEW</span>
+                        <span className="text-[7px] text-brand-secondary font-black uppercase tracking-[0.25em] block mt-0.5">Strategic Finance</span>
                     </div>
                 </div>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-10">
+                <div className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
                         <button
                             key={link.id}
                             onClick={() => scrollToSection(link.id)}
-                            className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-brand-secondary transition-colors relative group"
+                            className="text-[11px] font-bold uppercase tracking-widest text-slate-500 hover:text-brand-secondary transition-colors relative group"
                         >
                             {link.name}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all group-hover:w-full" />
@@ -55,9 +55,9 @@ const Navbar = ({ scrollToSection }) => {
                     ))}
                     <a
                         href="https://wa.me/971553536448"
-                        className="btn-primary !py-2.5 !px-6 !text-xs !rounded-full flex items-center gap-2"
+                        className="btn-primary !py-1.5 !px-4 !text-[9px] !rounded-md flex items-center gap-1"
                     >
-                        <Phone size={14} />
+                        <Phone size={10} />
                         Consult Now
                     </a>
                 </div>

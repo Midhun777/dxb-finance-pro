@@ -107,17 +107,24 @@ const LeadPathForm = () => {
                                     <button
                                         key={p.id}
                                         onClick={() => setPath(p.id)}
-                                        className="premium-card group text-left flex flex-col justify-between min-h-[320px]"
+                                        className="group"
                                     >
-                                        <div>
-                                            <div className={`w-16 h-16 ${p.color} rounded-2xl flex items-center justify-center mb-8 border border-black/5 group-hover:scale-110 group-hover:bg-brand-secondary group-hover:text-white transition-all duration-500`}>
-                                                {p.icon}
+                                        <div className={`p-6 md:p-8 rounded-[2rem] border-2 transition-all duration-500 relative overflow-hidden flex flex-col items-center text-center gap-4 ${path === p.id
+                                            ? 'border-emerald-500 bg-emerald-50/50 shadow-xl scale-[1.02]'
+                                            : 'border-slate-100 bg-white hover:border-emerald-200 hover:shadow-lg hover:-translate-y-1'}`}>
+
+                                            <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-colors duration-500 ${path === p.id ? 'bg-emerald-500 text-white' : 'bg-slate-50 text-emerald-500 group-hover:bg-emerald-50'}`}>
+                                                {/* Assuming p.icon is a React component that accepts a size prop */}
+                                                {React.cloneElement(p.icon, { size: path === p.id ? 28 : 24 })}
                                             </div>
-                                            <h3 className="text-2xl font-black text-slate-900 mb-3 tracking-tighter uppercase italic">{p.title}</h3>
-                                            <p className="text-slate-500 text-lg leading-relaxed font-medium">{p.tagline}</p>
-                                        </div>
-                                        <div className="mt-8 flex items-center gap-2 text-brand-secondary font-black text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                                            Select Path <ArrowRight size={16} />
+
+                                            <div className="space-y-1.5">
+                                                <h3 className={`text-lg md:text-xl font-black uppercase tracking-tight ${path === p.id ? 'text-slate-900' : 'text-slate-700'}`}>{p.title}</h3>
+                                                <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed px-2">{p.tagline}</p>
+                                            </div>
+                                            <div className="mt-8 flex items-center gap-2 text-brand-secondary font-black text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                                Select Path <ArrowRight size={16} />
+                                            </div>
                                         </div>
                                     </button>
                                 ))}
@@ -131,45 +138,45 @@ const LeadPathForm = () => {
                                 className="glass rounded-[48px] p-8 md:p-16 relative overflow-hidden"
                             >
                                 {/* Decorative elements */}
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+                                <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-3xl -mr-24 -mt-24" />
 
                                 <button
                                     onClick={() => setPath(null)}
-                                    className="absolute top-10 left-10 text-slate-400 hover:text-brand-primary flex items-center gap-2 text-xs font-black uppercase tracking-widest transition-colors z-10"
+                                    className="absolute top-8 left-8 text-slate-400 hover:text-brand-primary flex items-center gap-2 text-[10px] font-black uppercase tracking-widest transition-colors z-10"
                                 >
-                                    <ArrowLeft size={16} /> Back
+                                    <ArrowLeft size={14} /> Back
                                 </button>
 
-                                <div className="text-center mb-16 relative z-10">
-                                    <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter uppercase italic">
+                                <div className="text-center mb-10 md:mb-12 relative z-10">
+                                    <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-2 tracking-tighter uppercase italic">
                                         {path === 'personal' ? 'Personal Loan Application' : path === 'buyout' ? 'Loan Buyout Strategy' : 'Credit Card Matchmaker'}
                                     </h3>
-                                    <p className="text-brand-secondary font-black tracking-[0.2em] uppercase text-xs">Direct Support: 055 353 6448</p>
+                                    <p className="text-brand-secondary font-black tracking-[0.2em] uppercase text-[10px]">Direct Support: 055 353 6448</p>
                                 </div>
 
                                 <form onSubmit={handleSubmit} className="space-y-10 max-w-2xl mx-auto relative z-10">
                                     {path === 'personal' && (
                                         <div className="grid md:grid-cols-2 gap-10">
-                                            <div className="space-y-4">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Monthly Salary (AED)</label>
-                                                <select name="salaryRange" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold">
+                                            <div className="space-y-3">
+                                                <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Monthly Salary (AED)</label>
+                                                <select name="salaryRange" required onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm">
                                                     <option value="">Select Range</option>
                                                     <option value="<5000">Less than AED 5,000</option>
                                                     <option value="5000-10000">AED 5,000 - 10,000</option>
                                                     <option value="10000+">AED 10,000+</option>
                                                 </select>
                                             </div>
-                                            <div className="space-y-4">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Employer Name</label>
-                                                <input type="text" name="employer" placeholder="Company Name" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
+                                            <div className="space-y-3">
+                                                <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Employer Name</label>
+                                                <input type="text" name="employer" placeholder="Company Name" required onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm" />
                                             </div>
-                                            <div className="space-y-4">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Required Amount (AED)</label>
-                                                <input type="number" name="loanAmount" placeholder="e.g. 100,000" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
+                                            <div className="space-y-3">
+                                                <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Required Amount (AED)</label>
+                                                <input type="number" name="loanAmount" placeholder="e.g. 100,000" required onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm" />
                                             </div>
-                                            <div className="space-y-4">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-2">Other Liabilities</label>
-                                                <input type="text" name="liabilities" placeholder="e.g. Card EMIs" required onChange={handleInputChange} className="w-full p-5 rounded-2xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold" />
+                                            <div className="space-y-3">
+                                                <label className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Other Liabilities</label>
+                                                <input type="text" name="liabilities" placeholder="e.g. Card EMIs" required onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-white/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm" />
                                             </div>
                                         </div>
                                     )}
@@ -223,19 +230,19 @@ const LeadPathForm = () => {
                                         </div>
                                     )}
 
-                                    <div className="pt-10">
+                                    <div className="pt-6">
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="btn-secondary w-full !py-6 !text-2xl shadow-[0_30px_60px_-15px_rgba(5,150,105,0.4)]"
+                                            className="btn-secondary w-full !py-4 md:!py-5 !text-lg md:!text-xl shadow-[0_20px_40px_-10px_rgba(5,150,105,0.3)]"
                                         >
                                             {isSubmitting ? 'SECURELY SENDING...' : (
-                                                <span className="flex items-center justify-center gap-4">
-                                                    SUBMIT & CONNECT <MessageCircle size={32} />
+                                                <span className="flex items-center justify-center gap-3">
+                                                    SUBMIT & CONNECT <MessageCircle size={24} />
                                                 </span>
                                             )}
                                         </button>
-                                        <p className="text-center text-[10px] text-slate-400 mt-8 uppercase tracking-[0.3em] font-black opacity-60 italic">End-to-End Encrypted Consultation Request</p>
+                                        <p className="text-center text-[9px] text-slate-400 mt-6 uppercase tracking-[0.3em] font-black opacity-60 italic">End-to-End Encrypted Consultation Request</p>
                                     </div>
                                 </form>
                             </motion.div>

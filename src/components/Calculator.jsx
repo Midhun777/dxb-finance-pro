@@ -23,7 +23,7 @@ const CalculatorComponent = () => {
                         type="number"
                         value={salary}
                         onChange={(e) => setSalary(Number(e.target.value))}
-                        className={`w-full p-4 rounded-xl border ${salary < 5000 && salary > 0 ? 'border-red-400' : 'border-slate-100'} bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-base md:text-lg`}
+                        className={`w-full px-4 py-3 rounded-xl border ${salary < 5000 && salary > 0 ? 'border-red-400' : 'border-slate-100'} bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm md:text-base`}
                     />
                     {salary < 5000 && salary > 0 && (
                         <p className="text-[10px] text-red-500 font-bold">* Minimum salary 5,000 AED required</p>
@@ -35,7 +35,7 @@ const CalculatorComponent = () => {
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(Number(e.target.value))}
-                        className="w-full p-4 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-base md:text-lg"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm md:text-base"
                     />
                 </div>
                 <div className="space-y-2">
@@ -44,7 +44,7 @@ const CalculatorComponent = () => {
                         type="number"
                         value={currentEMI}
                         onChange={(e) => setCurrentEMI(Number(e.target.value))}
-                        className="w-full p-4 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-base md:text-lg"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm md:text-base"
                     />
                 </div>
                 <div className="space-y-2">
@@ -52,7 +52,7 @@ const CalculatorComponent = () => {
                     <select
                         value={tenure}
                         onChange={(e) => setTenure(Number(e.target.value))}
-                        className="w-full p-4 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-base md:text-lg appearance-none cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all font-bold text-sm md:text-base appearance-none cursor-pointer"
                     >
                         <option value={36}>36 Months</option>
                         <option value={48}>48 Months</option>
@@ -61,25 +61,25 @@ const CalculatorComponent = () => {
             </div>
 
             {/* Main Result Display - Premium Gradient Box */}
-            <div className={`relative p-1 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-[32px] overflow-hidden shadow-2xl transition-opacity duration-300 ${salary < 5000 ? 'opacity-50 grayscale' : 'opacity-100'}`}>
-                <div className="bg-white rounded-[30px] p-6 md:p-10 text-center">
-                    <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] md:text-xs mb-4">Estimated Monthly Savings</p>
-                    <h3 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter">
+            <div className={`relative p-0.5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-[2rem] overflow-hidden shadow-xl transition-opacity duration-300 ${salary < 5000 ? 'opacity-50 grayscale' : 'opacity-100'}`}>
+                <div className="bg-white rounded-[1.95rem] p-6 md:p-8 text-center">
+                    <p className="text-slate-500 font-bold uppercase tracking-widest text-[9px] md:text-[10px] mb-3">Estimated Monthly Savings</p>
+                    <h3 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter">
                         AED {salary >= 5000 && estimatedSavings > 0 ? Math.round(estimatedSavings).toLocaleString() : '0'}
-                        <span className="text-xl md:text-2xl text-emerald-500 ml-1 italic">*</span>
+                        <span className="text-lg md:text-xl text-emerald-500 ml-0.5 italic">*</span>
                     </h3>
                 </div>
             </div>
 
             {/* Detailed Strategy Breakdown */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                <div className="glass p-6 md:p-8 rounded-3xl border-slate-100 text-center">
-                    <p className="text-[10px] md:text-xs text-slate-400 uppercase font-black tracking-widest mb-2 md:mb-3">New Monthly EMI</p>
-                    <p className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">AED {Math.round(emi).toLocaleString()}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                <div className="glass p-5 md:p-6 rounded-2xl border-slate-100 text-center">
+                    <p className="text-[9px] md:text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1.5 md:mb-2">New Monthly EMI</p>
+                    <p className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">AED {Math.round(emi).toLocaleString()}</p>
                 </div>
-                <div className="glass p-6 md:p-8 rounded-3xl border-slate-100 text-center">
-                    <p className="text-[10px] md:text-xs text-slate-400 uppercase font-black tracking-widest mb-2 md:mb-3">Total Tenure Savings</p>
-                    <p className="text-3xl md:text-4xl font-black text-emerald-600 tracking-tight">AED {salary >= 5000 && (estimatedSavings * tenure) > 0 ? Math.round(estimatedSavings * tenure).toLocaleString() : '0'}</p>
+                <div className="glass p-5 md:p-6 rounded-2xl border-slate-100 text-center">
+                    <p className="text-[9px] md:text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1.5 md:mb-2">Total Tenure Savings</p>
+                    <p className="text-2xl md:text-3xl font-black text-emerald-600 tracking-tight">AED {salary >= 5000 && (estimatedSavings * tenure) > 0 ? Math.round(estimatedSavings * tenure).toLocaleString() : '0'}</p>
                 </div>
             </div>
 

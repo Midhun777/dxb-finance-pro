@@ -22,7 +22,7 @@ const App = () => {
       <Navbar scrollToSection={scrollToSection} />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+      <section className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -38,29 +38,29 @@ const App = () => {
               >
                 Personal Finance Expert UAE
               </motion.span>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[0.9]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[0.95]">
                 Master Your Finances. <br />
                 <span className="brand-gradient-text">Secure Your Future.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+              <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
                 Expert guidance on <span className="text-slate-900">Personal Loans</span>,
                 <span className="text-slate-900"> Credit Cards</span>, and
                 <span className="text-slate-900"> Loan Buyouts</span>. Strategy-driven financial growth in the UAE.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:row items-center justify-center gap-4">
                 <button
                   onClick={() => scrollToSection('select-path')}
-                  className="btn-primary w-full sm:w-auto flex items-center justify-center gap-3 group"
+                  className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 group"
                 >
-                  <Calculator size={22} className="group-hover:rotate-12 transition-transform" />
+                  <Calculator size={18} className="group-hover:rotate-12 transition-transform" />
                   Check Loan Eligibility
                 </button>
                 <a
                   href="https://wa.me/971553536448"
-                  className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-3 group"
+                  className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2 group"
                 >
-                  <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
+                  <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
                   Chat with Abin
                 </a>
               </div>
@@ -87,19 +87,19 @@ const App = () => {
       <section id="about" className="py-32 relative">
         <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="max-w-6xl mx-auto glass rounded-[40px] p-8 md:p-16 flex flex-col md:flex-row items-center gap-16 relative overflow-hidden"
+            className="max-w-5xl mx-auto glass rounded-[32px] p-8 md:p-12 flex flex-col md:row items-center gap-10 md:gap-16 relative overflow-hidden"
           >
             {/* Inner background glow */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" />
 
             <div className="flex-1 space-y-8 relative z-10">
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
-                  Meet Abin Mathew: <br />
-                  <span className="text-brand-secondary">Strategic Financial Partner</span>
+                <h2 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight uppercase tracking-tighter italic">
+                  Abin Mathew <br />
+                  <span className="text-brand-secondary">Strategic Finance Architect</span>
                 </h2>
                 <div className="w-20 h-1.5 bg-brand-secondary rounded-full" />
               </div>
@@ -141,8 +141,8 @@ const App = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
               </div>
               {/* Decorative tags */}
-              <div className="absolute -bottom-6 -left-6 glass px-6 py-4 rounded-2xl shadow-xl z-20 animate-bounce-slow">
-                <p className="text-brand-secondary font-black text-sm uppercase tracking-widest">Expert Advisor</p>
+              <div className="absolute -bottom-4 -left-4 glass px-4 py-3 rounded-xl shadow-lg z-20 animate-bounce-slow">
+                <p className="text-brand-secondary font-black text-[10px] uppercase tracking-widest">Expert Advisor</p>
               </div>
             </div>
           </motion.div>
@@ -150,10 +150,10 @@ const App = () => {
       </section>
 
       {/* Select Your Path Section */}
-      <div id="select-path" className="py-16">
-        <div className="container mx-auto px-4 text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-6">Choose Your Strategic Path</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">Select the service that fits your current financial objective.</p>
+      <div id="select-path" className="py-12 md:py-16">
+        <div className="container mx-auto px-4 text-center mb-10 md:mb-14">
+          <h2 className="text-3xl md:text-4xl font-black mb-4 uppercase tracking-tighter">Choose Your Strategic Path</h2>
+          <p className="text-lg text-slate-600 max-w-xl mx-auto font-medium">Select the service that fits your current financial objective.</p>
         </div>
         <LeadPathForm />
       </div>
@@ -165,36 +165,36 @@ const App = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-7xl font-black mb-8 leading-none">Strategic Debt Solutions</h2>
-            <div className="w-20 md:w-24 h-2 bg-emerald-500 mx-auto rounded-full" />
+          <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-5xl font-black mb-4 leading-none uppercase tracking-tighter">Strategic Debt Solutions</h2>
+            <div className="w-16 md:w-20 h-1.5 bg-emerald-500 mx-auto rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-12 gap-6 auto-rows-[250px] md:auto-rows-[300px]">
+          <div className="grid md:grid-cols-12 gap-5 auto-rows-[220px] md:auto-rows-[250px]">
             {/* Personal Loans */}
             <motion.div
-              whileHover={{ y: -10 }}
-              className="md:col-span-4 glass-dark p-6 md:p-10 flex flex-col justify-between group"
+              whileHover={{ y: -8 }}
+              className="md:col-span-4 glass-dark p-6 md:p-8 flex flex-col justify-between group"
             >
-              <div className="space-y-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl md:text-2xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">01</div>
-                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter">Personal Loans</h3>
+              <div className="space-y-3">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-black text-lg md:text-xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">01</div>
+                <h3 className="text-lg md:text-xl font-black uppercase tracking-tighter">Personal Loans</h3>
               </div>
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed group-hover:text-slate-200 transition-colors">
+              <p className="text-slate-400 text-sm md:text-base leading-relaxed group-hover:text-slate-200 transition-colors">
                 Tailored financing with UAE's most competitive rates. Immediate approvals for your goals.
               </p>
             </motion.div>
 
             {/* Loan Buyouts - Principal Item */}
             <motion.div
-              whileHover={{ y: -10 }}
-              className="md:col-span-8 glass-dark p-6 md:p-10 flex flex-col justify-between border-emerald-500/40 relative overflow-hidden group"
+              whileHover={{ y: -8 }}
+              className="md:col-span-8 glass-dark p-6 md:p-8 flex flex-col justify-between border-emerald-500/40 relative overflow-hidden group"
             >
-              <div className="absolute -top-4 right-10 bg-emerald-500 text-brand-primary px-6 py-2 rounded-full text-xs md:text-sm font-black uppercase tracking-widest z-20 shadow-xl">Recommended</div>
-              <div className="space-y-4 md:space-y-6 relative z-10">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500 text-brand-primary rounded-2xl flex items-center justify-center font-black text-xl md:text-2xl">02</div>
-                <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter">Loan Buyouts</h3>
-                <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-xl group-hover:text-white transition-colors">
+              <div className="absolute -top-4 right-10 bg-emerald-500 text-brand-primary px-5 py-1.5 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest z-20 shadow-xl">Recommended</div>
+              <div className="space-y-3 md:space-y-4 relative z-10">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-emerald-500 text-brand-primary rounded-xl flex items-center justify-center font-black text-lg md:text-xl">02</div>
+                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter">Loan Buyouts</h3>
+                <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-lg group-hover:text-white transition-colors">
                   Stop overpaying on interest. Consolidate your existing debt into a single, lower-cost monthly payment and regain control of your cash flow.
                 </p>
               </div>
@@ -203,28 +203,28 @@ const App = () => {
 
             {/* Credit Card Optimization */}
             <motion.div
-              whileHover={{ y: -10 }}
-              className="md:col-span-7 glass-dark p-6 md:p-10 flex flex-col justify-between group"
+              whileHover={{ y: -8 }}
+              className="md:col-span-7 glass-dark p-6 md:p-8 flex flex-col justify-between group"
             >
-              <div className="space-y-4">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center font-black text-xl md:text-2xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">03</div>
-                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter">Credit Optimization</h3>
+              <div className="space-y-3">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center font-black text-lg md:text-xl group-hover:bg-emerald-500 group-hover:text-brand-primary transition-all">03</div>
+                <h3 className="text-lg md:text-xl font-black uppercase tracking-tighter">Credit Optimization</h3>
               </div>
-              <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-md group-hover:text-slate-200 transition-colors">
+              <p className="text-slate-400 text-sm md:text-base leading-relaxed max-w-md group-hover:text-slate-200 transition-colors">
                 Don’t just spend—earn. Select and manage cards with top-tier cashback, miles, and rewards tailored to your lifestyle.
               </p>
             </motion.div>
 
             {/* CTA Bento Box */}
             <motion.div
-              whileHover={{ y: -10 }}
-              className="md:col-span-5 bg-emerald-500 p-10 flex flex-col justify-center items-center text-brand-primary rounded-3xl group cursor-pointer"
+              whileHover={{ y: -8 }}
+              className="md:col-span-5 bg-emerald-500 p-8 md:p-10 flex flex-col justify-center items-center text-brand-primary rounded-[2.5rem] group cursor-pointer"
               onClick={() => window.open('https://wa.me/971553536448', '_blank')}
             >
-              <MessageCircle size={64} className="mb-6 group-hover:scale-125 transition-transform duration-500" />
-              <h3 className="text-3xl font-black text-center mb-4">Start Now</h3>
-              <p className="text-brand-primary font-bold text-center">Talk to a Specialist Now</p>
-              <ArrowRight size={24} className="mt-6 animate-pulse-subtle" />
+              <MessageCircle size={48} className="mb-4 group-hover:scale-125 transition-transform duration-500" />
+              <h3 className="text-2xl font-black text-center mb-2">Start Now</h3>
+              <p className="text-brand-primary font-bold text-center text-sm">Talk to a Specialist Now</p>
+              <ArrowRight size={20} className="mt-4 animate-pulse-subtle" />
             </motion.div>
           </div>
         </div>
@@ -265,9 +265,9 @@ const App = () => {
       {/* Footer - Premium Dark Refinement */}
       <footer className="bg-slate-900 border-t border-white/5 py-24 text-white">
         <div className="container mx-auto px-4 text-center">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter brand-gradient-text !from-emerald-400 !to-white mb-4 italic">ABIN MATHEW</h2>
-            <p className="text-emerald-500 font-bold tracking-[0.3em] uppercase text-xs md:text-sm">UAE Personal Finance Expert</p>
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter brand-gradient-text !from-emerald-400 !to-white mb-2 italic">ABIN MATHEW</h2>
+            <p className="text-emerald-500 font-bold tracking-[0.25em] uppercase text-[10px] md:text-xs">UAE Personal Finance Expert</p>
           </div>
 
           <div className="flex justify-center gap-8 mb-12">
